@@ -28,28 +28,28 @@ public class lumberjack {
 	
 		// < ---- Rank Experience Requirements ---- > \\
 		
-		static final  int adept = 	1000,
-				   		  novice =  3000,
-				   		  veteran = 6000,
-				   		  master = 10000;
+		static final  int adept =   1000,
+				  novice =  3000,
+				  veteran = 6000,
+				  master = 10000;
 		
 		// < ---- Experience required to cut down a tree type ----> \\
 		
 		static final int  cutAcacia = 	7000,
-				   		  cutBirch = 	1000, 
-				   		  cutDarkOak = 	2000,
-				   		  cutJungle = 	5000,
-						  cutOak = 	  	   0,
-						  cutSpruce = 	3000;
+				  cutBirch = 	1000, 
+				  cutDarkOak = 	2000,
+				  cutJungle = 	5000,
+				  cutOak = 	   0,
+				  cutSpruce = 	3000;
 		
 		// <---- Experience gained from cutting a log of a tree ----> \\
 		
 		static final int  xpAcacia = 	50,
-						  xpBirch = 	30,
-						  xpDarkOak = 	35,
-						  xpJungle = 	45,
-						  xpOak = 		25,
-						  xpSpruce = 	40;
+				  xpBirch = 	30,
+				  xpDarkOak = 	35,
+				  xpJungle = 	45,
+				  xpOak = 	25,
+				  xpSpruce = 	40;
 	
 	// < ---- [END] CONFIGURABLE VARIABLES ---- > \\
 		
@@ -74,8 +74,8 @@ public class lumberjack {
 		
 		String message;
 			
-			previousXP = jobData.getData().getCompoundTag(jobName).getCompoundTag(player.getDisplayNameString()).getInteger("xp");
-			currentXP =  jobData.getData().getCompoundTag(jobName).getCompoundTag(player.getDisplayNameString()).getInteger("xp");
+		previousXP = jobData.getData().getCompoundTag(jobName).getCompoundTag(player.getDisplayNameString()).getInteger("xp");
+		currentXP =  jobData.getData().getCompoundTag(jobName).getCompoundTag(player.getDisplayNameString()).getInteger("xp");
 		
 		if (!player.worldObj.isRemote) {
 			
@@ -92,8 +92,8 @@ public class lumberjack {
 			// < ---- [RESULTS] SENDS RESULTS TO PLAYER ---- > \\
 		
 				message = EnumChatFormatting.DARK_GREEN + "[LUMBERJACK] " + EnumChatFormatting.WHITE + "Gained " + 
-						addXP + EnumChatFormatting.DARK_GREEN + " Lumberjack " + EnumChatFormatting.WHITE + 
-						"exp. " + EnumChatFormatting.DARK_GREEN + "(Total: " + currentXP + ")";
+					  addXP + EnumChatFormatting.DARK_GREEN + " Lumberjack " + EnumChatFormatting.WHITE + 
+					  "exp. " + EnumChatFormatting.DARK_GREEN + "(Total: " + currentXP + ")";
 				
 				player.addChatMessage(new ChatComponentText(message));
 				
@@ -109,7 +109,7 @@ public class lumberjack {
 	
 	public int getXP(EntityPlayer player) { 
 
-		if 		(jobData.getData().getCompoundTag(jobName).getCompoundTag(player.getDisplayNameString()).hasKey("xp")) 
+		if 	(jobData.getData().getCompoundTag(jobName).getCompoundTag(player.getDisplayNameString()).hasKey("xp")) 
 		return 	 jobData.getData().getCompoundTag(jobName).getCompoundTag(player.getDisplayNameString()).getInteger("xp");
 		return 	 0; }
 	
@@ -125,17 +125,17 @@ public class lumberjack {
 		currentXP = jobData.getData().getCompoundTag(jobName).getCompoundTag(player.getDisplayNameString()).getInteger("xp");
 		
 		
-		if 		(currentXP > master - 1) 	newAwardLvl = 4;
+		if 	(currentXP > master - 1) 	newAwardLvl = 4;
 		else if (currentXP > veteran - 1) 	newAwardLvl = 3;
 		else if (currentXP > novice - 1) 	newAwardLvl = 2;
 		else if (currentXP > adept - 1) 	newAwardLvl = 1;
-		else 								newAwardLvl = 0;
+		else 					newAwardLvl = 0;
 			
-		if 		(previousXP > master - 1) 	previousAwardLvl = 4;
+		if 	(previousXP > master - 1) 	previousAwardLvl = 4;
 		else if (previousXP > veteran - 1) 	previousAwardLvl = 3;
 		else if (previousXP > novice -1) 	previousAwardLvl = 2;
 		else if (previousXP > adept -1 ) 	previousAwardLvl = 1;
-		else 								previousAwardLvl = 0;
+		else 					previousAwardLvl = 0;
 			
 		if (previousAwardLvl == 0 || newAwardLvl > previousAwardLvl) 
 			giveAward(newAwardLvl);
